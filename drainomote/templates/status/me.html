@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+{% block body %}
+{% load staticfiles %}
+
+<h1>Group membership</h1>
+<ol>
+    {% for group in groups %}
+    <li>{{ group }}</li>
+    {% endfor %}
+</ol>
+
+<h1>Real servers</h1>
+<ol>
+    {% for realserver in realservers %}
+    <li>{{ realserver }}</li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

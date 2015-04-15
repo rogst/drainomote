@@ -1,0 +1,6 @@
+tr.sm {
+    display: none;
+}
+tr.lm {
+    display: table-row;
+}

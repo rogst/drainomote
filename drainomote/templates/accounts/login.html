@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% block body %}
+{% load staticfiles %}
+
+{% if next %}
+<form action="?next={{next}}" method="post" >
+{%else%}
+<form method="post" >
+{% endif %}
+    {% csrf_token %}
+    <fieldset>
+        <legend>Login</legend>
+        <input type="text" name="form_username" id="login_username" placeholder="Username">
+        <input type="password" name="form_password" id="login_password" placeholder="Password">
+        <input type="submit" name="submit_login" value="Login">
+    </fieldset>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<p class="error">
+            {{ message }}
+            </p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</form>
+
+{% endblock %}

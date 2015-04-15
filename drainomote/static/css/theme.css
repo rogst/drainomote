@@ -1,0 +1,127 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+a#toggle-menu,
+a#toggle-menu:visited,
+#toggle-menu {
+    float: right;
+    background: #2E2E2E;
+    color: #FFFFFF;
+    outline: 0;
+}
+#menu {
+    display: block;
+    position: absolute;
+    top: 44px;
+    right: 0px;
+    overflow: hidden;
+    width: 0px;
+    padding: 0px;
+    margin: 0;
+     
+    list-style: none;
+    background: #2E2E2E;
+    z-index: 100;
+    transition: width 0.25s ease-in-out;
+    -webkit-transition: width 0.25s ease-in-out;
+}
+#menu a {
+    display: block;
+    color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba( 255, 255, 255, 0.05 );
+}
+.show-menu #menu {
+    display: block;
+    right: 0px;
+    width: 190px;
+    padding: 15px 25px;
+}
+
+.clear-both {
+    clear: both;
+}
+header {
+    background: #2E2E2E;
+    color: #FFFFFF;
+    padding: 0.4em;
+}
+header > h1 {
+    display: inline;
+    font-size: 1.6em;
+}
+main {
+    position: relative;
+    z-index: 20;
+}
+fieldset {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+thead {
+    font-weight: bold;
+}
+tr.enabled {
+    background: #66FF66;
+}
+tr.disabled {
+    background: #FF5050;
+}
+tr.lm {
+    display: none;
+}
+td {
+    padding: 0.3em;
+}
+
+a.button {
+    /* IE10 Consumer Preview */
+    background-image: -ms-linear-gradient(bottom, #CCCCCC 0%, #DDDDDD 100%);
+    /* Mozilla Firefox */
+    background: -moz-linear-gradient(center top , rgba(97, 184, 219, 0), #CCCCCC) repeat scroll 0% 0% #DDDDDD;
+    /*background-image: -moz-linear-gradient(bottom, #CCCCCC 0%, #DDDDDD 100%);*/
+    /* Opera */
+    background-image: -o-linear-gradient(bottom, #CCCCCC 0%, #DDDDDD 100%);
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #CCCCCC), color-stop(1, #DDDDDD));
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-linear-gradient(bottom, #CCCCCC 0%, #DDDDDD 100%);
+    /* W3C Markup, IE10 Release Preview */
+    background-image: linear-gradient(to top, #CCCCCC 0%, #DDDDDD 100%);
+    padding: 5px;
+    color: #000000;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 1px #135C86 inset, 0px 2px 1px 0px rgba(255, 255, 255, 0.75) inset;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+a.button:hover {
+    /* IE10 Consumer Preview */
+    background-image: -ms-linear-gradient(bottom, #CFCFCF 0%, #F3F3F3 100%);
+    /* Mozilla Firefox */
+    background: -moz-linear-gradient(center top , rgba(97, 184, 219, 0), #CFCFCF) repeat scroll 0% 0% #F3F3F3;
+    /*background-image: -moz-linear-gradient(bottom, #CFCFCF 0%, #F3F3F3 100%);*/
+    /* Opera */
+    background-image: -o-linear-gradient(bottom, #CFCFCF 0%, #F3F3F3 100%);
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #CFCFCF), color-stop(1, #F3F3F3));
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-linear-gradient(bottom, #CFCFCF 0%, #F3F3F3 100%);
+    /* W3C Markup, IE10 Release Preview */
+    background-image: linear-gradient(to top, #CFCFCF 0%, #F3F3F3 100%);
+}

@@ -1,0 +1,36 @@
+{% extends "master.html" %}
+{% block body %}
+{% load staticfiles %}
+
+<table>
+    <thead>
+        <tr class="sm">
+            <td>Server</td><td></td>
+        </tr>
+        <tr class="lm">
+            <td>Server</td><td>IP</td><td>Active Conns</td><td>Persistent Entries</td><td>Conns/Sec</td><td></td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for rs in realservers %}
+        <tr class="sm {{ rs.status }}">
+            <td>{{ rs.name }}</td>
+            {% if rs.status == "enabled" %}
+                <td><a href="{% url 'status:disable' rs.ip%}" class="button">Disable</a></td>
+            {% else %}
+                <td><a href="{% url 'status:enable' rs.ip%}" class="button">Enable</a></td>
+            {% endif %}
+        </tr>
+        <tr class="lm {{ rs.status }}">
+            <td>{{ rs.name }}</td><td>{{ rs.ip }}</td><td>{{ rs.activeconns }}</td><td>{{ rs.persist }}</td><td>{{ rs.connspersec }}</td>
+            {% if rs.status == "enabled" %}
+                <td><a href="{% url 'status:disable' rs.ip%}" class="button">Disable</a></td>
+            {% else %}
+                <td><a href="{% url 'status:enable' rs.ip%}" class="button">Enable</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
