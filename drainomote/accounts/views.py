@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 
+
 def post_login(request):
     if request.method == "POST":
         username = request.POST['form_username']
@@ -18,12 +19,16 @@ def post_login(request):
                 if request.GET['next']:
                     return redirect(request.GET['next'])
             else:
-                messages.add_message(request, messages.ERROR, 'Account has been disabled.')
+                messages.add_message(request,
+                                     messages.ERROR,
+                                     'Account has been disabled.')
                 # Return a 'disabled account' error message
         else:
-            messages.add_message(request, messages.ERROR, 'Authentication failed.')
+            messages.add_message(request,
+                                 messages.ERROR,
+                                 'Authentication failed.')
             # Return an 'invalid login' error message.
-    
+
     return render(request, "accounts/login.html")
 
 

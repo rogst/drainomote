@@ -5,6 +5,7 @@ from .kemp import KempLB
 from .models import Realserver, Realserver_Group_Permissions
 # Create your views here.
 
+
 @login_required
 def index(request):
     user = request.user
@@ -21,12 +22,15 @@ def index(request):
             rs["ip"] = row.realserver.ip
             rs["name"] = row.realserver.name
             rs["status"] = realserver_info[row.realserver.ip]["status"]
-            rs["activeconns"] = realserver_info[row.realserver.ip]["activeconns"]
+            rs["activeconns"] = \
+                realserver_info[row.realserver.ip]["activeconns"]
             rs["persist"] = realserver_info[row.realserver.ip]["persist"]
-            rs["connspersec"] = realserver_info[row.realserver.ip]["connspersec"]
+            rs["connspersec"] = \
+                realserver_info[row.realserver.ip]["connspersec"]
             realservers.append(rs)
 
     return render(request, "status/index.html", {"realservers": realservers})
+
 
 @login_required
 def me(request):
@@ -38,7 +42,9 @@ def me(request):
         for row in rows:
             realservers.append(row.realserver.name)
 
-    return render(request, "status/me.html", {"groups": groups, "realservers": realservers})
+    return render(request, "status/me.html",
+                  {"groups": groups, "realservers": realservers})
+
 
 @login_required
 def disable(request, rs_ip):
@@ -51,11 +57,15 @@ def disable(request, rs_ip):
             realservers.append(row.realserver.ip)
 
     if rs_ip in realservers:
-        lb = KempLB("https", "drainomote", "bXDizv1SfERUcILsF7ko", "10.0.16.20")
+        lb = KempLB("https",
+                    "drainomote",
+                    "bXDizv1SfERUcILsF7ko",
+                    "10.0.16.20")
         lb.disable_realserver(rs_ip)
 
     time.sleep(3)
     return redirect("status:index")
+
 
 @login_required
 def enable(request, rs_ip):
@@ -68,7 +78,10 @@ def enable(request, rs_ip):
             realservers.append(row.realserver.ip)
 
     if rs_ip in realservers:
-        lb = KempLB("https", "drainomote", "bXDizv1SfERUcILsF7ko", "10.0.16.20")
+        lb = KempLB("https",
+                    "drainomote",
+                    "bXDizv1SfERUcILsF7ko",
+                    "10.0.16.20")
         lb.enable_realserver(rs_ip)
 
     time.sleep(2)

@@ -10,9 +10,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 BASE_DIR = os.path.dirname(__file__)
-#djangopath = os.path.dirname(__file__)
+# djangopath = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -63,10 +63,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'drainomote',
-	'USER': 'drainomote',
-	'PASSWORD': 'e57c04aa-526f-46fb-b847-af6d1dc3643a',
-	'HOST': '127.0.0.1',
-	'PORT': '5432',
+        'USER': 'drainomote',
+        'PASSWORD': 'e57c04aa-526f-46fb-b847-af6d1dc3643a',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -93,3 +93,13 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+KEMPLM = {
+    'default': {
+        'NAME': 'drainomote',
+        'USER': 'drainomote',
+        'PASSWORD': 'e57c04aa-526f-46fb-b847-af6d1dc3643a',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
