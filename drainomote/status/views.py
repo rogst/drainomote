@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 import time
-from .kemp import KempLB
+from drainomote.loadbalancers.kemp import Kemp
 from .models import Realserver, Realserver_Group_Permissions
-# Create your views here.
 
 
 @login_required
 def index(request):
+    """
+    List the accessible real server status information.
+    """
     user = request.user
     groups = user.groups.all()
 
-    lb = KempLB("https", "drainomote", "bXDizv1SfERUcILsF7ko", "10.0.16.20")
+    lb = Kemp()
     realserver_info = lb.get_realservers()
 
     realservers = []
@@ -34,6 +36,10 @@ def index(request):
 
 @login_required
 def me(request):
+    """
+    Show your profile page, contains information about which groups
+    you belong to and which real servers you have access to.
+    """
     user = request.user
     groups = user.groups.all()
     realservers = []
@@ -48,6 +54,9 @@ def me(request):
 
 @login_required
 def disable(request, rs_ip):
+    """
+    Disable the specified real server.
+    """
     user = request.user
     groups = user.groups.all()
     realservers = []
@@ -57,10 +66,7 @@ def disable(request, rs_ip):
             realservers.append(row.realserver.ip)
 
     if rs_ip in realservers:
-        lb = KempLB("https",
-                    "drainomote",
-                    "bXDizv1SfERUcILsF7ko",
-                    "10.0.16.20")
+        lb = Kemp()
         lb.disable_realserver(rs_ip)
 
     time.sleep(3)
@@ -69,6 +75,9 @@ def disable(request, rs_ip):
 
 @login_required
 def enable(request, rs_ip):
+    """
+    Enable the specified real servers.
+    """
     user = request.user
     groups = user.groups.all()
     realservers = []
@@ -78,10 +87,7 @@ def enable(request, rs_ip):
             realservers.append(row.realserver.ip)
 
     if rs_ip in realservers:
-        lb = KempLB("https",
-                    "drainomote",
-                    "bXDizv1SfERUcILsF7ko",
-                    "10.0.16.20")
+        lb = Kemp()
         lb.enable_realserver(rs_ip)
 
     time.sleep(2)

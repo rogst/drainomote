@@ -71,8 +71,14 @@ thead {
 tr.enabled {
     background: #66FF66;
 }
+tr.enabled:hover {
+    background: #AAFFAA;
+}
 tr.disabled {
     background: #FF5050;
+}
+tr.diabled:hover {
+    background: #FF8080;
 }
 tr.lm {
     display: none;

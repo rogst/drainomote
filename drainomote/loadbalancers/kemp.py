@@ -1,22 +1,23 @@
 import requests
 import xml.etree.ElementTree as ET
+from django.conf import settings
 
 
-class KempLB():
-    def __init__(self, protocol, username, password, hostname):
-        self.username = username
-        self.password = password
-        self.protocol = protocol
-        self.hostname = hostname
-
-        url_format = "{protocol}://{username}:{password}@{hostname}"
-        self.service_uri = url_format.format(protocol=protocol,
-                                             username=username,
-                                             password=password,
-                                             hostname=hostname)
-
-    def test(self):
-        return self.service_uri
+class Kemp():
+    def __init__(self, loadbalancer="default"):
+        url_format = "{protocol}://{username}:{password}@{hostname}:{port}"
+        kemp = settings.KEMPLM[loadbalancer]
+        self.username = kemp["USER"]
+        self.password = kemp["PASSWORD"]
+        self.protocol = kemp["PROTO"]
+        self.hostname = kemp["HOST"]
+        self.port = kemp["PORT"]
+        self.service_uri = \
+            url_format.format(protocol=self.protocol,
+                              username=self.username,
+                              password=self.password,
+                              hostname=self.hostname,
+                              port=self.port)
 
     def get_realservers(self):
         r = requests.get("{0}/access/stats".format(self.service_uri),

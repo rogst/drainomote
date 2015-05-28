@@ -1,4 +1,6 @@
 # Ignore compiled python files
 *.pyc
-__pycache__
 
+# Ignore Sublime text files
+*.sublime-project
+*.sublime-workspace

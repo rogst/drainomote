@@ -14,7 +14,7 @@ It is best to run this in a Python virtual environement in order to avoid affect
 
 Create virtualenv
 
-> virtualenv -p python3 --prompt="[Drainomote] " .virtualenv
+> virtualenv -p python3 virtualenv
 
 Activate your virtual environment and install following packages
 
@@ -22,14 +22,14 @@ Activate your virtual environment and install following packages
 
 In order to install psycopg2 you need the postgresql server dev package
 
-> sudo apt-get install postgresql-server-dev-9.3
+> sudo apt-get install postgresql-server-dev-9.3  
 > pip install psycopg2
 
 Install python requests module
 
 > pip install requests
 
-### Datebase creation
+### Database creation
 
 Connect to postgresql using psql
 
@@ -37,7 +37,7 @@ Connect to postgresql using psql
 
 Create a user and database
 
-> CREATE USER "drainomote_user" WITH PASSWORD 'secret';
+> CREATE USER "drainomote_user" WITH PASSWORD 'secret';  
 > CREATE DATABASE "drainomote" OWNER "drainomote_user";
 
 Set the database name and credentials in settings.py

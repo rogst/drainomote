@@ -18,14 +18,14 @@ BASE_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pui56k4smjky6jg9#cns&g_y8pk(5y!@b-cdh_g2_evq16fyjm'
+SECRET_KEY = 'ENTER YOUR SECRET KEY HERE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Change to your hostname for better security
 
 
 # Application definition
@@ -63,8 +63,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'drainomote',
-        'USER': 'drainomote',
-        'PASSWORD': 'e57c04aa-526f-46fb-b847-af6d1dc3643a',
+        'USER': 'username',
+        'PASSWORD': 'secret',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -94,12 +94,13 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+# KEMP RESTful API parameters
 KEMPLM = {
     'default': {
-        'NAME': 'drainomote',
-        'USER': 'drainomote',
-        'PASSWORD': 'e57c04aa-526f-46fb-b847-af6d1dc3643a',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PROTO': 'https',
+        'USER': 'username',
+        'PASSWORD': 'secret',
+        'HOST': 'ip address',
+        'PORT': '443',
     }
 }
