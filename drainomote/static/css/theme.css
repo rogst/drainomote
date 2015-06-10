@@ -77,7 +77,7 @@ tr.enabled:hover {
 tr.disabled {
     background: #FF5050;
 }
-tr.diabled:hover {
+tr.disabled:hover {
     background: #FF8080;
 }
 tr.lm {
